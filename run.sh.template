@@ -1,0 +1,13 @@
+#!/bin/bash
+
+docker stop keycloak
+docker rm keycloak
+docker run \
+--name keycloak \
+-p 8080:8080 \
+-e POSTGRES_ADDR="172.17.0.1" \
+-e POSTGRES_PORT="5432" \
+-e POSTGRES_DATABASE="keycloak" \
+-e POSTGRES_USER="keycloak" \
+-e POSTGRES_PASSWORD="secret" \
+jboss/keycloak
